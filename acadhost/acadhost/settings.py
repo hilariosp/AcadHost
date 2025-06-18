@@ -39,13 +39,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "usuario",
     "projeto",
-    "tag"
-    "projeto_tag",
-    "equipe",
-    "avaliacao",
-    "criterios",
-    "barema",
-
 ]
 
 MIDDLEWARE = [
