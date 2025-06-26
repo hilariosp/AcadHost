@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %} {# Pode remover se não houver tags {% static %} diretas neste template #}
+
+{% block content %}
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Detalhes do Projeto: {{ projeto.nome }}</h1> {# Título com o nome do projeto #}
+        <h4 class="card-description">
+          Informações completas sobre o projeto.
+        </h4>
+
+        <div class="form-group d-flex align-items-center mb-3"> {# d-flex para linha, align-items-center para alinhamento vertical, mb-3 para margem inferior #}
+          <label class="mb-0 mr-3 text-muted">Autor:</label> {# mb-0 remove margem inferior padrão, mr-3 adiciona margem à direita #}
+          <p class="form-control-static mb-0 font-weight-bold">{{ projeto.autor.get_full_name|default:projeto.autor.username }}</p> {# mb-0 remove margem inferior padrão #}
+        </div>
+
+        <div class="form-group d-flex align-items-center mb-3">
+          <label class="mb-0 mr-3 text-muted">Nome:</label>
+          <p class="form-control-static mb-0 font-weight-bold">{{ projeto.nome }}</p>
+        </div>
+
+        <div class="form-group mb-3"> {# Estes campos de texto longo podem ser melhor em linhas separadas #}
+          <label class="text-muted">Introdução:</label>
+          <p class="form-control-static">{{ projeto.introducao }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Resumo:</label>
+          <p class="form-control-static">{{ projeto.resumo }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Referencial Teórico:</label>
+          <p class="form-control-static">{{ projeto.referencial_teorico }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Desenvolvimento:</label>
+          <p class="form-control-static">{{ projeto.desenvolvimento }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Resultados:</label>
+          <p class="form-control-static">{{ projeto.resultados }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Conclusão:</label>
+          <p class="form-control-static">{{ projeto.conclusao }}</p>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="text-muted">Referências:</label>
+          <p class="form-control-static">{{ projeto.referencias }}</p>
+        </div>
+
+        <div class="form-group d-flex align-items-center mb-3">
+          <label class="mb-0 mr-3 text-muted">Data de Criação:</label>
+          <p class="form-control-static mb-0">{{ projeto.data_criacao|date:"d/m/Y H:i" }}</p>
+        </div>
+
+        <div class="form-group d-flex align-items-center mb-3">
+          <label class="mb-0 mr-3 text-muted">Última Atualização:</label>
+          <p class="form-control-static mb-0">{{ projeto.data_atualizacao|date:"d/m/Y H:i" }}</p>
+        </div>
+
+        <div class="form-group d-flex align-items-center mb-3">
+          <label class="mb-0 mr-3 text-muted">Tags:</label>
+          <p class="form-control-static mb-0">
+            {% for tag in projeto.tags.all %}
+              <span class="badge badge-outline-info">{{ tag.nome }}</span>{% if not forloop.last %}, {% endif %}
+            {% empty %}
+              Nenhuma tag
+            {% endfor %}
+          </p>
+        </div>
+
+        <div class="mt-4"> {# Adiciona um espaçamento antes dos botões #}
+            <a href="{% url 'projeto_index' %}" class="btn btn-dark">Voltar para a Listagem</a>
+            <a href="{% url 'projeto_update' id_projeto=projeto.id %}" class="btn btn-warning ml-2">Editar Projeto</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

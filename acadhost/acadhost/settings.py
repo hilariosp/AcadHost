@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "usuarios",
     "projeto",
+    "avaliacao",
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -129,5 +131,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL= 'login'
-LOGIN_REDIRECT_URL= '/pessoa/'
+LOGIN_REDIRECT_URL= '/projeto/'
 LOGOUT_REDIRECT_URL ='/auth/login/'
