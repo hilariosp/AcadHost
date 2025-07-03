@@ -1,4 +1,3 @@
-
 {% load static %}
 {% spaceless %}
 <!DOCTYPE html>
@@ -38,38 +37,27 @@
               </div>
               <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
               <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
+                <a href="{% url 'user_profile_edit' %}" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-primary"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                    <p class="preview-subject ellipsis mb-1 text-small">Editar Perfil</p>
                   </div>
                 </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword  text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-                  </div>
-                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <div class="preview-thumbnail">
+                        <div class="preview-icon bg-dark rounded-circle">
+                            <i class="mdi mdi-logout text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="preview-item-content">
+                        <p class="preview-subject mb-1 text-small">Sair</p>
+                    </div>
+                </a>
               </div>
             </div>
           </li>
@@ -246,7 +234,6 @@
                     </div>
                     <div class="preview-item-content">
                       <p class="preview-subject mb-1">Launch Admin</p>
-                      <p class="text-muted ellipsis mb-0"> New admin wow! </p>
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
@@ -275,17 +262,7 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-logout text-danger"></i>
-                    </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Log out</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
+                  {# O LOGOUT FOI REMOVIDO DAQUI #}
                   <p class="p-3 mb-0 text-center">Advanced settings</p>
                 </div>
               </li>
